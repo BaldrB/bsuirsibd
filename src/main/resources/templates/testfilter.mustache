@@ -3,6 +3,7 @@
 <head>
     <title>Филтры</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
     <div>
@@ -13,15 +14,24 @@
     </form>
     </div>
     <div>Список базы данных</div>
-    {{#viewgs}}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Id Названия</th>
+        </tr>
+
+        {{#viewgs}}
+        <tr>
+            <td>{{idviewg}}</td>
+            <td>{{viewg}}</td>
+            <td>{{viewg_id}}</td>
+        </tr>
+        {{/viewgs}}
+
+    </table>
     <div>
-        <b>{{idviewg}}</b>
-        <span>{{viewg}}</span>
-        <i>{{viewg_id}}</i>
-    </div>
-    {{/viewgs}}
-    <div>
-    <a href="/test" class="btn">Назад</a>
+    <a href="/testmain" class="btn">Главная страница</a>
     </div>
 </body>
 </html>

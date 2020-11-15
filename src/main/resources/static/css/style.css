@@ -1,0 +1,26 @@
+.btn {
+    display: inline-block; /* Строчно-блочный элемент */
+    background: #8C959D; /* Серый цвет фона */
+    color: #fff; /* Белый цвет текста */
+    padding: 1rem 1.5rem; /* Поля вокруг текста */
+    text-decoration: none; /* Убираем подчёркивание */
+    border-radius: 3px; /* Скругляем уголки */
+}
+
+
+table {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    width: 100%;
+}
+th {
+    border: 1px solid grey;
+}
+td {
+    border: solid 1px black;
+}
+
+td:hover {
+    background: #8C959D;
+    color: #ffe;
+}

@@ -3,6 +3,7 @@ package by.papkoulad.orgteh.controller;
 import by.papkoulad.orgteh.models.Viewg;
 import by.papkoulad.orgteh.repo.ViewgRepository;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,20 +46,31 @@ public class MainControllers {
         return "testadd";
     }
 
+    @GetMapping("/testfilter")
+    public String filterGet(Map<String, Object> model) {
+        return "testfilter";
+    }
 
-    @PostMapping("/testadd")
+
+    @PostMapping
     public String addPost(@RequestParam String textviewg, @RequestParam Integer idview, Map<String, Object> model) {
         Viewg viewg = new Viewg(textviewg, idview);
         viewgRepository.save(viewg);
         return "testmain";
     }
 
-    @GetMapping("/testfilter")
-    public String filter(Map<String, Object> model) {
-        Iterable<Viewg> viewgs = viewgRepository.findAll();
-        
+    @PostMapping("filter")
+    public String filterPost(@RequestParam String filter, Map<String, Object> model) {
+        Iterable<Viewg> viewgs;
+        if (filter != null && !filter.isEmpty()){
+            viewgs = viewgRepository.findByViewg(filter);
+        } else {
+            viewgs = viewgRepository.findAll();
+        }
+
         model.put("viewgs", viewgs);
-        return "testmain";
+
+        return "testfilter";
     }
 
     // @GetMapping("/")

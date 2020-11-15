@@ -26,6 +26,9 @@ public class Viewg {
 
     public Viewg() {
     }
+    public Viewg(String viewg) {
+        this.viewg = viewg;
+    }
 
     public Viewg(String viewg, Integer viewg_id) {
         this.viewg = viewg;
