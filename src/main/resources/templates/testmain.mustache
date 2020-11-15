@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Главная страница</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div>
+    <h1>Главнпя страница веб клиента </h1>
+    </div>
+    <div>Список базы данных</div>
+    {{#viewgs}}
+    <div>
+        <b>{{idviewg}}</b>
+        <span>{{viewg}}</span>
+        <i>{{viewg_id}}</i>
+    </div>
+    {{/viewgs}}
+    <div>
+    <a href="/test" class="btn">Назад</a>
+    <a href="/testadd" class="btn">Добавить запись</a>
+    </div>
+</body>
+</html>

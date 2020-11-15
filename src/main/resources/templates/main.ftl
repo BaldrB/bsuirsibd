@@ -1,19 +1,32 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html leng="en">
 <head>
-    <title th:text="${title}"/>
+    <title> Главная страница </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <p th:text="'Привет, ' + ${title} + '!'" />
+    <p>${title}</p>
 <div>
-    <h1 th:text="${col1}" />
-    <div th:each="el : ${post}">
-        <span th:text="${el.idviewg}"/>
-        <span th:text="${el.viewg}"/>
-        <span th:text="${el.viewg_id}"/>
-    </div>
     <a href="/add">Добавить запись</a>
 </div>
+<#list View as Viewg>
+<table>
+    <tr>
+        <td>ID</td>
+        <td>${View.idviewg}</td>
+    </tr>
+    <tr>
+        <td>Наименование</td>
+        <td>${View.viewg}</td>
+    </tr>
+    <tr>
+        <td>Дополнительный ид</td>
+        <td>${View.viewg_id}</td>
+    </tr>
+</table>
+<#else>
+No massage
+</#list>
+
 </body>
 </html>

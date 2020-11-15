@@ -12,6 +12,10 @@ public class Viewg {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer idviewg;
 
+    private String viewg;
+
+    private Integer viewg_id;
+
     public String getViewg() {
         return viewg;
     }
@@ -20,10 +24,6 @@ public class Viewg {
         this.viewg = viewg;
     }
 
-    private String viewg;
-
-    private Integer viewg_id;
-
     public Viewg() {
     }
 
@@ -31,6 +31,8 @@ public class Viewg {
         this.viewg = viewg;
         this.viewg_id = viewg_id;
     }
+
+
 
     public Integer getViewg_id() {
         return viewg_id;
@@ -44,7 +46,7 @@ public class Viewg {
         return idviewg;
     }
 
-    public void setIdviewg(Integer idviweg) {
+    public void setIdviewg(Integer idviewg) {
         this.idviewg = idviewg;
     }
 }
