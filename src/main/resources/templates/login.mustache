@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Вход в систему</title>
+        <link rel="stylesheet" href="css/stylelogon.css"/>
+    </head>
+    <body>
+        
+
+
+        <div id="hero">
+
+            <div class="navbar">
+
+                {{! <img src="images/logo.png" class="logo">
+
+                <div class="user">
+                    <button type="button">Explore</button>
+                    <img src="images/user.png">
+                </div> }}
+
+            </div>
+
+            <div class="container">
+                <div class="info">
+                    <h1>ORGTEHIKA</h1>
+                    <!-- <p>Вход
+                    </p> -->
+                    <form action="/login" method="post">
+                        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+                        <input type="text" name="username" placeholder="Пользователь"/>
+                        <input type="password" name="password" placeholder="Пароль"/>
+                        <input type="submit" value="Войти"/>
+                    </form>
+                    
+                </div>
+            </div>
+
+            {{! <div class="slider">
+                <img src="images/left-arrow.png" id="prev">
+                <div class="preview">
+                    <p>image here</p>
+                </div>
+            </div> }}
+        </div>
+    </body>
+</html>

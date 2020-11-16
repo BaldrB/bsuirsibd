@@ -19,22 +19,18 @@ public class MainControllers {
     @Autowired
     private ViewgRepository viewgRepository;
 
-    @GetMapping("/test")
-    public String main(@RequestParam(name="name", required = false, defaultValue = "World") String name, Map<String, Object> model) {
-        model.put("name", name);
-        return "test";
+    @GetMapping("/")
+    public String main(Map<String, Object> model) {
+        return "testhome";
+    }
+    @GetMapping("/testhome")
+    public String homeGet(Map<String, Object> model) {
+        return "testhome";
     }
     
-    @GetMapping
-    public String main(Map<String, Object> model) {
-        Iterable<Viewg> viewgs = viewgRepository.findAll();
-
-        model.put("viewgs", viewgs);
-        return "testmain";
-    }
-
     @GetMapping("/testmain")
     public String mainGet(Map<String, Object> model) {
+
         Iterable<Viewg> viewgs = viewgRepository.findAll();
 
         model.put("viewgs", viewgs);
@@ -52,11 +48,11 @@ public class MainControllers {
     }
 
 
-    @PostMapping
+    @PostMapping("addposta")
     public String addPost(@RequestParam String textviewg, @RequestParam Integer idview, Map<String, Object> model) {
         Viewg viewg = new Viewg(textviewg, idview);
         viewgRepository.save(viewg);
-        return "testmain";
+        return "testadd";
     }
 
     @PostMapping("filter")

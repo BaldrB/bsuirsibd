@@ -7,7 +7,8 @@
 </head>
 <body>
 <div>
-    <form method="post">
+    <form method="post" action="addposta">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
         <input type="text" name="textviewg" placeholder="Введите название" />
         <input type="text" name="idview" placeholder="Введите название" />
         <button type="submit">Добавить</button>

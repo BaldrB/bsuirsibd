@@ -7,6 +7,12 @@
 </head>
 <body>
     <div>
+        <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </div>
+    <div>
     <h1>Главнпя страница веб клиента </h1>
     </div>
     <div>Список базы данных</div>
@@ -27,9 +33,9 @@
 
     </table>
     <div>
-    <a href="/testmain" class="btn">Главная страница</a>
-    <a href="/testfilter" class="btn">Фильтр</a>
-    <a href="/testadd" class="btn">Добавить запись</a>
+        <a href="/testmain" class="btn">Главная страница</a>
+        <a href="/testfilter" class="btn">Фильтр</a>
+        <a href="/testadd" class="btn">Добавить запись</a>
     </div>
 </body>
 </html>
