@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Техника</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div>
+    <h1>Филтры </h1>
+    <form method="post" action="techatt">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <input type="text" name="techatt" placeholder="Введите название" />
+        <button type="submit">Поиск</button>
+    </form>
+    </div>
+    <div>Список базы данных</div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Инвертарный</th>
+            <th>Категория</th>
+            <th>Дата ввода в эксплуатацию</th>
+            <th>Характеристики</th>
+            <th>Место обитания</th>
+        </tr>
+
+        {{#techattributs}}
+        <tr>
+            <td>{{techId}}</td>
+            <td>{{techName}}</td>
+            <td>{{techInventory}}</td>
+            <td>{{techCategory}}</td>
+            <td>{{techData}}</td>
+            <td>{{techCharact}}</td>
+            <td>{{techLocation}}</td>
+        </tr>
+        {{/techattributs}}
+
+    </table>
+    <div>
+    <form method="post" action="addtechik">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+
+        <input type="text" name="techName" placeholder="Введите название техники" />
+        <input type="text" name="techInventory" placeholder="Инвертарный" />
+        <input type="text" name="techCategory" placeholder="выберите категорию" />
+        <input type="text" name="techData" placeholder="Введите дату" />
+        <input type="text" name="techCharact" placeholder="Введите характеристики" />
+        <input type="text" name="techLocation" placeholder="Место обитания" />
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+    <div>
+    <a href="/testmain" class="btn">Главная страница</a>
+    </div>
+</body>
+</html>
