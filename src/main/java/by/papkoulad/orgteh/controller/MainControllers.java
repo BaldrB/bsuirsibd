@@ -66,9 +66,14 @@ public class MainControllers {
     @RequestParam String techData, @RequestParam String techCharact, @RequestParam String techLocation, 
     Map<String, Object> model) 
     {
+        Iterable<TechAttribut> techAttribut;
 
-        TechAttribut techAttribut = new TechAttribut(techName, techInventory, techCategory, techData, techCharact, techLocation);
-        techAttRepository.save(techAttribut);
+        TechAttribut techAttributs = new TechAttribut(techName, techInventory, techCategory, techData, techCharact, techLocation);
+        techAttRepository.save(techAttributs);
+
+        techAttribut = techAttRepository.findAll();
+        model.put("techattributs", techAttribut);
+
         return "testtechnics";
     }
 
