@@ -6,39 +6,41 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <div id="hero1">
-        <div class="out">
-            <form action="/logout" method="post">
-                <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-                <input type="submit" value="Sign Out"/>
-            </form>
-        </div>
-        <div>
-        <h1>Главнпя страница веб клиента </h1>
-        </div>
-        <div>Список базы данных</div>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Название</th>
-                <th>Id Названия</th>
-            </tr>
-            
-            {{#viewgs}}
-            <tr>
-                <td>{{idviewg}}</td>
-                <td>{{viewg}}</td>
-                <td>{{viewg_id}}</td>
-            </tr>
-            {{/viewgs}}
+    <div id="main">
+        <div id="hero1">
+            <div class="out">
+                <form action="/logout" method="post">
+                    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+                    <input type="submit" value="Sign Out"/>
+                </form>
+            </div>
+            <div>
+            <h1>Главнпя страница веб клиента </h1>
+            </div>
+            <div>Список базы данных</div>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Id Названия</th>
+                </tr>
+                
+                {{#viewgs}}
+                <tr>
+                    <td>{{idviewg}}</td>
+                    <td>{{viewg}}</td>
+                    <td>{{viewg_id}}</td>
+                </tr>
+                {{/viewgs}}
 
-        </table>
-        <div>
-            <a href="/testmain" class="btn">Главная страница</a>
-            <a href="/testfilter" class="btn">Фильтр</a>
-            <a href="/testtechnics" class="btn">Техника</a>
-            <a href="/testadd" class="btn">Добавить запись</a>
+            </table>
+            <div>
+                <a href="/testmain" class="btn">Главная страница</a>
+                <a href="/testfilter" class="btn">Фильтр</a>
+                <a href="/testtechnics" class="btn">Техника</a>
+                <a href="/testadd" class="btn">Добавить запись</a>
+            </div>
         </div>
-    </div>
+    <div id="main">
 </body>
 </html>
