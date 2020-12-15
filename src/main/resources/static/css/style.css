@@ -100,6 +100,6 @@ table {
     border-bottom-left-radius: 5px;
     }
     tr:hover td{
-    background: #D1C7BF;
-    font-weight: bold;
+    background: #f0e9e5;
+    /* font-weight: bold; */
     }

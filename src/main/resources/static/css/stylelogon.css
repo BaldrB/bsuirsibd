@@ -7,7 +7,8 @@
 #hero{
     width: 100%;
     height: 100vh;
-    background-image: url(images/bg245.png);
+    background-color: #1D7373;
+    /* background-image: url(images/bg245.png); */
     background-size: cover;
     background-position: center;
     position: relative;
@@ -84,6 +85,10 @@
     background: transparent;
     color: #fff;
     font-size: 12px;
+}
+
+.exit:hover {
+    background: #5CCCCC;
 }
 
 ::placeholder{

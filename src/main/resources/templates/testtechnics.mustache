@@ -6,61 +6,61 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-<div id="main">
-    <div id="header">
-        <a href="/testmain" class="btn">Главная страница</a>
-        <a href="/testfilter" class="btn">Фильтр</a>
-        <a href="/testtechnics" class="btn">Техника</a>
-        <a href="/testadd" class="btn">Добавить запись</a>
-    </div>
+    <div id="main">
+        <div id="header">
+            <a href="/testmain" class="btn">Главная страница</a>
+            <a href="/testfilter" class="btn">Фильтр</a>
+            <a href="/testtechnics" class="btn">Техника</a>
+            <a href="/testadd" class="btn">Добавить запись</a>
+        </div>
 
 
-    <div>
-    <h1>Филтры </h1>
-    <form method="post" action="techatt">
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-        <input type="text" name="techatt" placeholder="Введите название" />
-        <button type="submit">Поиск</button>
-    </form>
-    </div>
-    <div>Список базы данных</div>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Название</th>
-            <th>Инвертарный</th>
-            <th>Категория</th>
-            <th>Дата ввода в эксплуатацию</th>
-            <th>Характеристики</th>
-            <th>Место обитания</th>
-        </tr>
+        <div>
+        <h1>Филтры </h1>
+        <form method="post" action="techatt">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+            <input type="text" name="techatt" placeholder="Введите название" />
+            <button type="submit">Поиск</button>
+        </form>
+        </div>
+        <div>Список базы данных</div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Инвертарный</th>
+                <th>Категория</th>
+                <th>Дата ввода в эксплуатацию</th>
+                <th>Характеристики</th>
+                <th>Место обитания</th>
+            </tr>
 
-        {{#techattributs}}
-        <tr>
-            <td>{{techId}}</td>
-            <td>{{techName}}</td>
-            <td>{{techInventory}}</td>
-            <td>{{techCategory}}</td>
-            <td>{{techData}}</td>
-            <td>{{techCharact}}</td>
-            <td>{{techLocation}}</td>
-        </tr>
-        {{/techattributs}}
+            {{#techattributs}}
+            <tr>
+                <td>{{techId}}</td>
+                <td>{{techName}}</td>
+                <td>{{techInventory}}</td>
+                <td>{{techCategory}}</td>
+                <td>{{techData}}</td>
+                <td>{{techCharact}}</td>
+                <td>{{techLocation}}</td>
+            </tr>
+            {{/techattributs}}
 
-    </table>
-    <div>
-    <form method="post" action="addtechik">
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        </table>
+        <div>
+        <form method="post" action="addtechik">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
 
-        <input type="text" name="techName" placeholder="Введите название техники" />
-        <input type="text" name="techInventory" placeholder="Инвертарный" />
-        <input type="text" name="techCategory" placeholder="выберите категорию" />
-        <input type="text" name="techData" placeholder="Введите дату" />
-        <input type="text" name="techCharact" placeholder="Введите характеристики" />
-        <input type="text" name="techLocation" placeholder="Место обитания" />
-        <button type="submit">Добавить</button>
-    </form>
-    </div>
+            <input type="text" name="techName" placeholder="Введите название техники" />
+            <input type="text" name="techInventory" placeholder="Инвертарный" />
+            <input type="text" name="techCategory" placeholder="выберите категорию" />
+            <input type="text" name="techData" placeholder="Введите дату" />
+            <input type="text" name="techCharact" placeholder="Введите характеристики" />
+            <input type="text" name="techLocation" placeholder="Место обитания" />
+            <button type="submit">Добавить</button>
+        </form>
+        </div>
     </div>
 </body>
 </html>
