@@ -17,6 +17,18 @@
 </div>
 
 <a href="/testmain" class="btn">Главная страница</a>
+<div>
+            <form method="post" action="addtechik">
+                <p><input type="hidden" name="_csrf" value="{{_csrf.token}}"/></p>
+                <p>Введите название техники <input type="text" name="techName" placeholder="Введите название техники" /></p>
+                <p>Инвертарный <input type="text" name="techInventory" placeholder="Инвертарный" /></p>
+                <p>выберите категорию <input type="text" name="techCategory" placeholder="выберите категорию" /></p>
+                <p>Введите дату <input type="text" name="techData" placeholder="Введите дату" /></p>
+                <p>Введите характеристики <input type="text" name="techCharact" placeholder="Введите характеристики" /></p>
+                <p>Место обитания <input type="text" name="techLocation" placeholder="Место обитания" /></p>
+                <p><button type="submit">Добавить</button></p>
+            </form>
+        </div>
 </div>
 </body>
 </html>

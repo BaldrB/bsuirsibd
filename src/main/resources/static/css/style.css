@@ -42,64 +42,56 @@
 }
 
 
-/* table {
-    border: 1px solid grey;
-    border-collapse: collapse;
-    width: 100%;
+.table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
 }
-th {
-    border: 1px solid grey;
-}
-td {
-    border: solid 1px black;
+.table th, .table td {
+	border: 1px solid #888;
+	padding: 10px;
+	text-align: center;
+	vertical-align: middle;
+	position: relative;
+	cursor: pointer;
 }
 
-td:hover {
-    background: #8C959D;
-    color: #ffe;
-} */
+/* Hover */
+.table .hover td:after {
+	content: '';
+	position: absolute;
+	top: 0px;
+	right: 0px;    
+	bottom: 0px;    
+	left: 0px;
+	width: 105%;
+	border-top: 3px solid #ffe5c5;
+	border-bottom: 3px solid #ffe5c5;
+}
+.table .hover td:first-child:after {
+	border-left: 3px solid #ffe5c5;
+}
+.table .hover td:last-child:after {
+	border-right: 3px solid #ffe5c5;
+	width: auto;
+}
 
-table {
-    border-spacing: 0;
-    empty-cells: hide;
-    }
-    td {
-    padding: 10px 20px;
-    text-align: center;
-    border-bottom: 1px solid #F4EEE8;
-    transition: all 0.5s linear;
-    }
-    td:first-child {
-    text-align: left;
-    color: #3D3511;
-    font-weight: bold;
-    }
-    th {
-    padding: 10px 20px;
-    color: #3D3511;
-    border-bottom: 1px solid #F4EEE8;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    }
-    td:nth-child(even) {
-    background: #F6D27E;
-    }
-    td:nth-child(odd) {
-    background: #D1C7BF;
-    }
-    th:nth-child(even)  {
-    background: #F6D27E;
-    }
-    th:nth-child(odd)  {
-    background: #D1C7BF;
-    }
-    .round-top {
-    border-top-left-radius: 5px;
-    }
-    .round-bottom {
-    border-bottom-left-radius: 5px;
-    }
-    tr:hover td{
-    background: #f0e9e5;
-    /* font-weight: bold; */
-    }
+/* Click */
+.table .active td:after {
+	content: '';
+	position: absolute;
+	top: 0px;
+	right: 0px;    
+	bottom: 0px;    
+	left: 0px;
+	width: 105%;
+	border-top: 3px solid orange;
+	border-bottom: 3px solid orange;
+}
+.table .active td:first-child:after {
+	border-left: 3px solid orange;
+}
+.table .active td:last-child:after {
+	border-right: 3px solid orange;
+	width: auto;
+}

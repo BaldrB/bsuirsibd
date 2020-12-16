@@ -24,8 +24,8 @@
         </form>
         </div>
         <div>Список базы данных</div>
-        <table>
-            <tr>
+        <table class="table">
+            <thead>
                 <th>ID</th>
                 <th>Название</th>
                 <th>Инвертарный</th>
@@ -33,9 +33,11 @@
                 <th>Дата ввода в эксплуатацию</th>
                 <th>Характеристики</th>
                 <th>Место обитания</th>
-            </tr>
+            </thead>
 
+            <tbody>
             {{#techattributs}}
+            
             <tr>
                 <td>{{techId}}</td>
                 <td>{{techName}}</td>
@@ -46,21 +48,66 @@
                 <td>{{techLocation}}</td>
             </tr>
             {{/techattributs}}
+            </tbody>
 
         </table>
         <div>
-        <form method="post" action="addtechik">
-            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+            <form method="post" action="addtechik">
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
 
-            <input type="text" name="techName" placeholder="Введите название техники" />
-            <input type="text" name="techInventory" placeholder="Инвертарный" />
-            <input type="text" name="techCategory" placeholder="выберите категорию" />
-            <input type="text" name="techData" placeholder="Введите дату" />
-            <input type="text" name="techCharact" placeholder="Введите характеристики" />
-            <input type="text" name="techLocation" placeholder="Место обитания" />
-            <button type="submit">Добавить</button>
-        </form>
+                <input type="text" name="techName" placeholder="Введите название техники" />
+                <input type="text" name="techInventory" placeholder="Инвертарный" />
+                <input type="text" name="techCategory" placeholder="выберите категорию" />
+                <input type="text" name="techData" placeholder="Введите дату" />
+                <input type="text" name="techCharact" placeholder="Введите характеристики" />
+                <input type="text" name="techLocation" placeholder="Место обитания" />
+                <button type="submit">Добавить</button>
+            </form>
+            <input type="button" value="Удалить" onclick="deletes()" />
         </div>
     </div>
+
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('.table tr').hover(function(){
+            $(this).addClass('hover');
+        }, function() {
+            $(this).removeClass('hover');
+        });
+
+        $('.table tr').click(function(){
+            $('.table tr').removeClass('active');
+            $(this).addClass('active');
+        });
+    });
+    </script>
+
+    <script type="text/javascript">
+    /* Данная функция создаёт кроссбраузерный объект XMLHTTP */
+    function getXmlHttp() {
+        var xmlhttp;
+        try {
+        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e) {
+        try {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (E) {
+        xmlhttp = false;
+        }
+        }
+        if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+        xmlhttp = new XMLHttpRequest();
+        }
+        return xmlhttp;
+    }
+    function deletes() {
+        var a = document.getElementById("active").value; // Считываем значение a
+        var xmlhttp = getXmlHttp(); // Создаём объект XMLHTTP
+        xmlhttp.open('POST', '/deletPost', true); // Открываем асинхронное соединение
+        xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Отправляем кодировку
+        xmlhttp.send(); // Отправляем POST-запрос
+    }
+    </script>
 </body>
 </html>

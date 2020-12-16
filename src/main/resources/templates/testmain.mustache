@@ -25,23 +25,41 @@
             <h1>Главнпя страница веб клиента </h1>
             </div>
             <div>Список базы данных</div>
-            <table>
-                <tr>
+            <table class="table">
+                <thead>
                     <th>ID</th>
                     <th>Название</th>
                     <th>Id Названия</th>
-                </tr>
-                
+                </thead>
+
+                <tbody>
                 {{#viewgs}}
-                <tr>
-                    <td>{{idviewg}}</td>
-                    <td>{{viewg}}</td>
-                    <td>{{viewg_id}}</td>
-                </tr>
+                    <tr>
+                        <td>{{idviewg}}</td>
+                        <td>{{viewg}}</td>
+                        <td>{{viewg_id}}</td>
+                    </tr>
                 {{/viewgs}}
+                </tbody>
 
             </table>
         </div>
     </div>
+
+    <script src="jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('.table tr').hover(function(){
+		$(this).addClass('hover');
+	}, function() {
+		$(this).removeClass('hover');
+	});
+
+	$('.table tr').click(function(){
+		$('.table tr').removeClass('active');
+		$(this).addClass('active');
+	});
+});
+</script>
 </body>
 </html>

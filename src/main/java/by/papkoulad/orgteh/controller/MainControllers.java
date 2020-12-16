@@ -85,6 +85,11 @@ public class MainControllers {
         return "testadd";
     }
 
+    @PostMapping("/deletPost")
+    public String deletPost(Map<String, Object> model) {
+        return "testadd";
+    }
+
     @PostMapping("filter")
     public String filterPost(@RequestParam String filter, Map<String, Object> model) {
         Iterable<Viewg> viewgs;
