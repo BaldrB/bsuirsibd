@@ -102,9 +102,9 @@
         return xmlhttp;
     }
     function deletes() {
-        var a = document.getElementById("active").value; // Считываем значение a
+
         var xmlhttp = getXmlHttp(); // Создаём объект XMLHTTP
-        xmlhttp.open('POST', '/deletPost', true); // Открываем асинхронное соединение
+        xmlhttp.open('POST', '/testtechnics', true); // Открываем асинхронное соединение
         xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Отправляем кодировку
         xmlhttp.send(); // Отправляем POST-запрос
     }

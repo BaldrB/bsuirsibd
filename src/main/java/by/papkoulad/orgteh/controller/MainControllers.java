@@ -13,7 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainControllers {
@@ -85,9 +88,14 @@ public class MainControllers {
         return "testadd";
     }
 
-    @PostMapping("/deletPost")
-    public String deletPost(Map<String, Object> model) {
-        return "testadd";
+    
+    @GetMapping("/testtechnics/{id}/edit")
+    public String bolckEdit(Map<String, Object> model) {
+
+        Iterable<TechAttribut> techAttribut = techAttRepository.findAll();
+        model.put("techattributs", techAttribut);
+
+        return "testtechnics";
     }
 
     @PostMapping("filter")
