@@ -7,34 +7,32 @@
 </head>
 <body>
 <div id="main">
+    <header th:insert="blocks/header :: header"></header>
     <div>
     <h1>Филтры </h1>
-    <form method="post" action="filter">
+    <form th:action="@{filter}" method="post">
         <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
         <input type="text" name="filter" placeholder="Введите название" />
         <button type="submit">Поиск</button>
     </form>
     </div>
     <div>Список базы данных</div>
-    <table>
-        <tr>
+    <table class="table">
+        <thead>
             <th>ID</th>
             <th>Название</th>
             <th>Id Названия</th>
-        </tr>
+        </thead>
 
-        {{#viewgs}}
-        <tr>
-            <td>{{idviewg}}</td>
-            <td>{{viewg}}</td>
-            <td>{{viewg_id}}</td>
-        </tr>
-        {{/viewgs}}
+        <tbody>
+            <tr th:each="el : ${viewgs}">
+                <td th:text="${el.idviewg}"></td>
+                <td th:text="${el.viewg}"></td>
+                <td th:text="${el.viewg_id}"></td>
+            </tr>
+        </tbody>
 
     </table>
-    <div>
-    <a href="/testmain" class="btn">Главная страница</a>
-    </div>
     </div>
 </body>
 </html>

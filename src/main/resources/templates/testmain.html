@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>Главная страница</title>
     <link rel="stylesheet" href="css/style.css" />
@@ -7,15 +7,10 @@
 </head>
 <body>
     <div id="main">
-        <div id="header">
-            <a href="/testmain" class="btn">Главная страница</a>
-            <a href="/testfilter" class="btn">Фильтр</a>
-            <a href="/testtechnics" class="btn">Техника</a>
-            <a href="/testadd" class="btn">Добавить запись</a>
-        </div>
+        <header th:insert="blocks/header :: header"></header>
         <div>
             <div class="out">
-                <form action="/logout" method="post">
+                <form th:action="@{/logout}" method="post">
                     <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
                     <input type="submit" value="Sign Out"/>
                 </form>
@@ -32,13 +27,11 @@
                 </thead>
 
                 <tbody>
-                {{#viewgs}}
-                    <tr>
-                        <td>{{idviewg}}</td>
-                        <td>{{viewg}}</td>
-                        <td>{{viewg_id}}</td>
+                    <tr th:each="el : ${viewgs}">
+                        <td th:text="${el.idviewg}"></td>
+                        <td th:text="${el.viewg}"></td>
+                        <td th:text="${el.viewg_id}"></td>
                     </tr>
-                {{/viewgs}}
                 </tbody>
 
             </table>

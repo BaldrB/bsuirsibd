@@ -7,18 +7,20 @@
 </head>
 <body>
 <div id="main">
+    <header th:insert="blocks/header :: header"></header>
 <div>
-    <form method="post" action="addposta">
+    <form action="@{addposta}" method="post">
         <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
         <input type="text" name="textviewg" placeholder="Введите название" />
         <input type="text" name="idview" placeholder="Введите название" />
         <button type="submit">Добавить</button>
     </form>
 </div>
-
-<a href="/testmain" class="btn">Главная страница</a>
-<div>
-            <form method="post" action="addtechik">
+<p>------------------------------------------</p>
+<p>------------------------------------------</p>
+<p>------------------------------------------</p>
+        <div>
+            <form th:action="@{addtechik}" method="post">
                 <p><input type="hidden" name="_csrf" value="{{_csrf.token}}"/></p>
                 <p>Введите название техники <input type="text" name="techName" placeholder="Введите название техники" /></p>
                 <p>Инвертарный <input type="text" name="techInventory" placeholder="Инвертарный" /></p>

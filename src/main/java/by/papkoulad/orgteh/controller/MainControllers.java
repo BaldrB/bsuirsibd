@@ -28,38 +28,38 @@ public class MainControllers {
     private TechAttributRepository techAttRepository;
 
     @GetMapping("/")
-    public String main(Map<String, Object> model) {
+    public String main(Model model) {
         return "testhome";
     }
     @GetMapping("/testhome")
-    public String homeGet(Map<String, Object> model) {
+    public String homeGet(Model model) {
         return "testhome";
     }
     
     @GetMapping("/testmain")
-    public String mainGet(Map<String, Object> model) {
+    public String mainGet(Model model) {
 
         Iterable<Viewg> viewgs = viewgRepository.findAll();
 
-        model.put("viewgs", viewgs);
+        model.addAttribute("viewgs", viewgs);
         return "testmain";
     }
 
     @GetMapping("/testadd")
-    public String addGet(Map<String, Object> model) {
+    public String addGet(Model model) {
         return "testadd";
     }
 
     @GetMapping("/testfilter")
-    public String filterGet(Map<String, Object> model) {
+    public String filterGet(Model model) {
         return "testfilter";
     }
 
     @GetMapping("/testtechnics")
-    public String mainTechnik(Map<String, Object> model) {
+    public String mainTechnik(Model model) {
 
         Iterable<TechAttribut> techAttribut = techAttRepository.findAll();
-        model.put("techattributs", techAttribut);
+        model.addAttribute("techattributs", techAttribut);
 
         return "testtechnics";
     }
@@ -67,7 +67,7 @@ public class MainControllers {
     @PostMapping("addtechik")
     public String addTechincs(@RequestParam String techName, @RequestParam String techInventory, @RequestParam String techCategory, 
     @RequestParam String techData, @RequestParam String techCharact, @RequestParam String techLocation, 
-    Map<String, Object> model) 
+    Model model) 
     {
         Iterable<TechAttribut> techAttribut;
 
@@ -75,14 +75,14 @@ public class MainControllers {
         techAttRepository.save(techAttributs);
 
         techAttribut = techAttRepository.findAll();
-        model.put("techattributs", techAttribut);
+        model.addAttribute("techattributs", techAttribut);
 
         return "testtechnics";
     }
 
 
     @PostMapping("addposta")
-    public String addPost(@RequestParam String textviewg, @RequestParam Integer idview, Map<String, Object> model) {
+    public String addPost(@RequestParam String textviewg, @RequestParam Integer idview, Model model) {
         Viewg viewg = new Viewg(textviewg, idview);
         viewgRepository.save(viewg);
         return "testadd";
@@ -90,16 +90,16 @@ public class MainControllers {
 
     
     @GetMapping("/testtechnics/{id}/edit")
-    public String bolckEdit(Map<String, Object> model) {
+    public String bolckEdit(Model model) {
 
         Iterable<TechAttribut> techAttribut = techAttRepository.findAll();
-        model.put("techattributs", techAttribut);
+        model.addAttribute("techattributs", techAttribut);
 
         return "testtechnics";
     }
 
     @PostMapping("filter")
-    public String filterPost(@RequestParam String filter, Map<String, Object> model) {
+    public String filterPost(@RequestParam String filter, Model model) {
         Iterable<Viewg> viewgs;
         if (filter != null && !filter.isEmpty()){
             viewgs = viewgRepository.findByViewg(filter);
@@ -107,28 +107,23 @@ public class MainControllers {
             viewgs = viewgRepository.findAll();
         }
 
-        model.put("viewgs", viewgs);
+        model.addAttribute("viewgs", viewgs);
 
         return "testfilter";
     }
 
-    // @GetMapping("/")
-    // public String main(Model model) {
-    //     Iterable<Viewg> viewgs = viewgRepository.findAll();
-    //     model.addAttribute("post", viewgs);
-    //     return "main";
-    // }
+    // @PostMapping("techatt")
+    // public String filterTechPost(@RequestParam String techatt, Model model) {
+    //     Iterable<TechAttribut> techatts;
+    //     if (techatt != null && !techatt.isEmpty()){
+    //         techatts = techAttRepository.findByViewg(techatt);
+    //     } else {
+    //         techatts = techAttRepository.findAll();
+    //     }
 
-    // @GetMapping("/add")
-    // public String addmain(Model model) {
-    //     return "add";
-    // }
+    //     model.addAttribute("techatt", techatts);
 
-    // @PostMapping("/add")
-    // public String orgPostAdd(@RequestParam String title, @RequestParam Integer idview, Model model) {
-    //     Viewg viewg = new Viewg(title, idview);
-    //     viewgRepository.save(viewg);
-    //     return "redirect:/";
+    //     return "testtechnics";
     // }
 
 }

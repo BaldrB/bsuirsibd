@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>Техника</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -7,17 +7,11 @@
 </head>
 <body>
     <div id="main">
-        <div id="header">
-            <a href="/testmain" class="btn">Главная страница</a>
-            <a href="/testfilter" class="btn">Фильтр</a>
-            <a href="/testtechnics" class="btn">Техника</a>
-            <a href="/testadd" class="btn">Добавить запись</a>
-        </div>
-
+        <header th:insert="blocks/header :: header"></header>
 
         <div>
         <h1>Филтры </h1>
-        <form method="post" action="techatt">
+        <form th:action="@{techatt}" method="post">
             <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
             <input type="text" name="techatt" placeholder="Введите название" />
             <button type="submit">Поиск</button>
@@ -36,25 +30,21 @@
             </thead>
 
             <tbody>
-            {{#techattributs}}
-            
-            <tr>
-                <td>{{techId}}</td>
-                <td>{{techName}}</td>
-                <td>{{techInventory}}</td>
-                <td>{{techCategory}}</td>
-                <td>{{techData}}</td>
-                <td>{{techCharact}}</td>
-                <td>{{techLocation}}</td>
-            </tr>
-            {{/techattributs}}
+                <tr th:each="el : ${techattributs}">
+                    <td th:text="${el.techId}"></td>
+                    <td th:text="${el.techName}"></td>
+                    <td th:text="${el.techInventory}"></td>
+                    <td th:text="${el.techCategory}"></td>
+                    <td th:text="${el.techData}"></td>
+                    <td th:text="${el.techCharact}"></td>
+                    <td th:text="${el.techLocation}"></td>
+                </tr>
             </tbody>
 
         </table>
         <div>
-            <form method="post" action="addtechik">
+            <form th:action="@{addtechik}" method="post">
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-
                 <input type="text" name="techName" placeholder="Введите название техники" />
                 <input type="text" name="techInventory" placeholder="Инвертарный" />
                 <input type="text" name="techCategory" placeholder="выберите категорию" />
@@ -63,7 +53,13 @@
                 <input type="text" name="techLocation" placeholder="Место обитания" />
                 <button type="submit">Добавить</button>
             </form>
+
             <input type="button" value="Удалить" onclick="deletes()" />
+
+            <form th:action="@{editTechink}" method="post">
+                <button type="submit">Редакировать</button>
+            </form>
+
         </div>
     </div>
 
