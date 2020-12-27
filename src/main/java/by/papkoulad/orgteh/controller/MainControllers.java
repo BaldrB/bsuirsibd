@@ -29,11 +29,10 @@ public class MainControllers {
 
     @GetMapping("/")
     public String main(Model model) {
-        return "testhome";
-    }
-    @GetMapping("/testhome")
-    public String homeGet(Model model) {
-        return "testhome";
+        Iterable<Viewg> viewgs = viewgRepository.findAll();
+
+        model.addAttribute("viewgs", viewgs);
+        return "testmain";
     }
     
     @GetMapping("/testmain")

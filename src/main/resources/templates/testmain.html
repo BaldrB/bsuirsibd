@@ -9,12 +9,9 @@
     <div id="main">
         <header th:insert="blocks/header :: header"></header>
         <div>
-            <div class="out">
-                <form th:action="@{/logout}" method="post">
-                    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-                    <input type="submit" value="Sign Out"/>
-                </form>
-            </div>
+            <!-- <div class="out">
+                
+            </div> -->
             <div>
             <h1>Главнпя страница веб клиента </h1>
             </div>
