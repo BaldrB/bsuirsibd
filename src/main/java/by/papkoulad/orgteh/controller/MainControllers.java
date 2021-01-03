@@ -1,8 +1,10 @@
 package by.papkoulad.orgteh.controller;
 
 import by.papkoulad.orgteh.models.TechAttribut;
+import by.papkoulad.orgteh.models.Technics;
 import by.papkoulad.orgteh.models.Viewg;
 import by.papkoulad.orgteh.repo.TechAttributRepository;
+import by.papkoulad.orgteh.repo.TechnicsRepository;
 import by.papkoulad.orgteh.repo.ViewgRepository;
 
 import java.util.List;
@@ -26,6 +28,9 @@ public class MainControllers {
 
     @Autowired
     private TechAttributRepository techAttRepository;
+
+    @Autowired
+    private TechnicsRepository techincsRepository;
 
     @GetMapping("/")
     public String main(Model model) {
@@ -59,6 +64,9 @@ public class MainControllers {
 
         Iterable<TechAttribut> techAttribut = techAttRepository.findAll();
         model.addAttribute("techattributs", techAttribut);
+
+        Iterable<Technics> technicsAttribute = techincsRepository.findAll();
+        model.addAttribute("technicsAttribute", technicsAttribute);
 
         return "testtechnics";
     }

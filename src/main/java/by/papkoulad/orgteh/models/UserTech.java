@@ -1,27 +1,32 @@
 package by.papkoulad.orgteh.models;
 
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
-public class UserTech {
+public class UserTech{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idusertech;
+    private Integer id;
 
+    public Integer getId() {
+        return this.id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Column
     private String fio;
-    private Integer number;
-
-    public Integer getIdusertech() {
-        return this.idusertech;
-    }
-
-    public void setIdusertech(Integer idusertech) {
-        this.idusertech = idusertech;
-    }
 
     public String getFio() {
         return this.fio;
@@ -31,11 +36,33 @@ public class UserTech {
         this.fio = fio;
     }
 
+    @Column
+    private Integer number;
+
     public Integer getNumber() {
         return this.number;
     }
 
     public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "usertech", cascade = CascadeType.ALL)
+    private List<Technics> usertech;
+
+    public List<Technics> getUsertech() {
+        return this.usertech;
+    }
+
+    public void setUsertech(List<Technics> usertech) {
+        this.usertech = usertech;
+    }
+
+    public UserTech() {
+    }
+
+    public UserTech(String fio, Integer number) {
+        this.fio = fio;
         this.number = number;
     }
     

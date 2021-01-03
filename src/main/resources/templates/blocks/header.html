@@ -4,6 +4,13 @@
         <a href="/testfilter" class="btn">Фильтр</a>
         <a href="/testtechnics" class="btn">Техника</a>
         <a href="/testadd" class="btn">Добавить запись</a>
+
+        <a href="/grouptech" class="btn">Группы</a>
+        <a href="/category" class="btn">Категории</a>
+        <a href="/technics" class="btn">Техника1</a>
+        <a href="/status" class="btn">статусы</a>
+        <a href="/location" class="btn">location</a>
+        <a href="/usertech" class="btn">Сотрудники</a>
         <form th:action="@{/logout}" method="post">
             <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
             <input type="submit" value="Выход"/>

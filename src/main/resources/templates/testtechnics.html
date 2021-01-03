@@ -42,6 +42,29 @@
             </tbody>
 
         </table>
+        <table class="table">
+            <thead>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Инвертарный</th>
+                <th>Категория</th>
+                <th>Дата ввода в эксплуатацию</th>
+                <th>Характеристики</th>
+                <th>Место обитания</th>
+            </thead>
+
+            <tbody>
+                <tr th:each="en : ${technicsAttribute}">
+                    <td th:text="${en.serial}"></td>
+                    <td th:text="${en.inventory}"></td>
+                    <td th:text="${en.nametech}"></td>
+                    <td th:text="${en.status}"></td>
+                    <td th:text="${en.usertech}"></td>
+                    <td th:text="${en.location}"></td>
+                </tr>
+            </tbody>
+
+        </table>
         <div>
             <form th:action="@{addtechik}" method="post">
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
