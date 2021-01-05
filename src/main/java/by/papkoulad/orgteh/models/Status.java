@@ -9,8 +9,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import lombok.Data;
 
 @Entity
+@Data
 public class Status{
 
     @Id

@@ -10,85 +10,52 @@
         <header th:insert="blocks/header :: header"></header>
 
         <div>Список базы данных</div>
-        </table>
         <table class="table">
             <thead>
                 <th>Название</th>
+                <th>Характеристики</th>
+                <th>Группа</th>
             </thead>
 
             <tbody>
-                <thead>
-                    <tr>
-                        <th>Фирма</th>
-                        <th>Страна</th>
-                        <th>Марка</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="entity : ${list}">
-                        <td th:text="${entity.name}"></td>
-                        <td th:text="${entity.charact}"></td>
-                        <td th:text="${entity.grouptech}"></td>
-
-                        <td class="btnInTable widthLastCol"  th:if="${#request.isUserInRole('ROLE_ADMIN')}">
-                            <a th:href="@{/auto/edit/{id}(id=${entity.id})}" class="btn btn-primary ">
-                                <i class="fas fa-edit">Редактировать</i>
-                            </a>
-                        </td>
-                        <td class="btnInTable widthLastCol"  th:if="${#request.isUserInRole('ROLE_ADMIN')}">
-                            <a th:href="@{/auto/delete/{id}(id=${entity.id})}" class="btn btn-primary">
-                                <i class="fas fa-trash">Удалить</i>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
+                <tr th:each="entity : ${nameTech}">
+                    <td th:text="${entity.nametech}"></td>
+                    <td th:text="${entity.charact}"></td>
+                    <td th:text="${entity.grouptechName}"></td>
+                </tr>
             </tbody>
 
         </table>
 
         
+        <div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- <div>
-            <form th:action="@{grouptech/create}" th:object="${entity}" method="post">
+            <div>
                 <table>
+                <form th:action="@{nametech/create}" method="post">
+                <thead>
+                    <th>Название</th>
+                    <th>Характеристики</th>
+                    <th>Группа</th>
+                </thead>
+    
+                <tbody>
                     <tr>
-                        <th><label>Фирма</label></th>
+                        <td><input type="text" name="nametech" placeholder="Введите название техники" /></td>
+                        <td><input type="text" name="charact" placeholder="Введите название техники" /></td>
                         <td>
-                            <select name="firmId" id="firmId" required>
-                                <option th:if="${entity.firma==null}" name="firmId" th:each="cat : ${firms}" th:value="${cat.id}" th:text="${cat}"
-                                    th:selected="${entity.firma==cat}"
-                                    ></option>
-                                <option th:if="${entity.firma!=null}" name="firmId" th:each="cat : ${firms}" th:value="${cat.id}" th:text="${cat}"
-                                    th:selected="${entity.firma.id==cat.id}"
-                                    ></option>
-                            </select>
+                            <select id="grouptechId" name="grouptechId" required>
+                                <option value="0">select operator</option>
+                                <option th:each="grouptech : ${grouptechs}" th:value="${grouptech.id}" th:text="${grouptech.name}"></option>
+                                </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <input type="text" name="grouptechname" placeholder="Наименовани" />
-                            <button type="submit">Добавить</button>
-                        </td>
-                    </tr>
-                </table>
+                </tbody>
                 
-            </form>
+                    <p><button type="submit">Добавить</button></p>
+                </form>
+            </table>
+            </div>
 
             <input type="button" value="Удалить" onclick="deletes()" />
 
@@ -96,7 +63,7 @@
                 <button type="submit">Редакировать</button>
             </form>
 
-        </div> -->
+        </div>
     </div>
 
 

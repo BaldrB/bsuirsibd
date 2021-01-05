@@ -10,27 +10,24 @@
         <header th:insert="blocks/header :: header"></header>
 
         <div>Список базы данных</div>
-        <h2 th:case="null"> Записей не найдено </h2>
-        <div th:case="*">
         <table class="table">
             <thead>
                 <th>Название</th>
             </thead>
 
             <tbody>
-                <tr th:each="entity : ${list}">
+                <tr th:each="entity : ${grouptech}">
                     <td th:text="${entity.name}"></td>
                 </tr>
             </tbody>
 
         </table>
-        </div>
 
         
         <div>
 
             <div>
-                <form th:action="@{grouptech/create}" th:object="${entity}" method="post">
+                <form th:action="@{grouptech/create}" method="post">
                     <p>Введите название техники <input type="text" name="name" placeholder="Введите название техники" /></p>
                     <p><button type="submit">Добавить</button></p>
                 </form>

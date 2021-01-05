@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,16 +19,24 @@ public class GrouptechController {
     @Autowired
     GrouptechServices grouptechServices;
 
+    @Autowired
+    GrouptechRepository grouptechRepository;
+
     @GetMapping
 	String getGrouptech(Model model) {
-		model.addAttribute("list", grouptechServices.repository.findAll());
-		return "grouptech-list";
+        Iterable<Grouptech> grouptech = grouptechRepository.findAll();
+        model.addAttribute("grouptech", grouptech);
+		// model.addAttribute("list", grouptechServices.repository.findAll());
+		return "grouptech";
     }
     
     @RequestMapping(path = "/create", method = RequestMethod.POST)
-	public String createOrUpdate(Grouptech entity) throws Exception {
-		grouptechServices.create(entity);
-		return "redirect:/grouptech-list";
+	public String createGrouptech(@RequestParam String name) throws Exception {
+
+        Grouptech grouptech = new Grouptech(name);
+        grouptechRepository.save(grouptech);
+        
+		return "redirect:/grouptech";
 	}
     
 }
