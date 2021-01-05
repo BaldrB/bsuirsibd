@@ -3,7 +3,6 @@ package by.papkoulad.orgteh.models;
 import java.util.Collection;
 import java.util.Set;
 
-import javax.annotation.Generated;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;

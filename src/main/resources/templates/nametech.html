@@ -10,8 +10,11 @@
         <header th:insert="blocks/header :: header"></header>
 
         <div>Список базы данных</div>
+        <form method="post" th:action="@{nametech}">
+        <section class="nameTechList">
         <table class="table">
             <thead>
+                <th>Выбор</th>
                 <th>Название</th>
                 <th>Характеристики</th>
                 <th>Группа</th>
@@ -19,13 +22,22 @@
 
             <tbody>
                 <tr th:each="entity : ${nameTech}">
+                    <td><input th:onclick="'make('+${entity.id}+')'"
+                        type="radio" name="id" th:value=${entity.id}
+                        checked="checked">в</td>
                     <td th:text="${entity.nametech}"></td>
                     <td th:text="${entity.charact}"></td>
                     <td th:text="${entity.grouptechName}"></td>
+                    <td>
+                        <a th:href="@{/nameTech/delete/{id}(id=${entity.id})}">
+                            <i>Удалить</i>
+                        </a>
+                    </td>
                 </tr>
             </tbody>
 
         </table>
+        </section>
 
         
         <div>
@@ -51,66 +63,16 @@
                         </td>
                     </tr>
                 </tbody>
-                
-                    <p><button type="submit">Добавить</button></p>
-                </form>
-            </table>
+                </table>
+
+                <button type="submit" formaction="/nametech/create">Добавить</button>
+                <button type="submit" formaction="/nametech/edit">Редакировать</button>
             </div>
-
-            <input type="button" value="Удалить" onclick="deletes()" />
-
-            <form th:action="@{editgrouptech}" method="post">
-                <button type="submit">Редакировать</button>
-            </form>
+            
 
         </div>
+        </form>
     </div>
 
-
-
-
-
-    <script src="jquery-3.5.1.min.js"></script>
-    <script>
-    $(document).ready(function(){
-        $('.table tr').hover(function(){
-            $(this).addClass('hover');
-        }, function() {
-            $(this).removeClass('hover');
-        });
-
-        $('.table tr').click(function(){
-            $('.table tr').removeClass('active');
-            $(this).addClass('active');
-        });
-    });
-    </script>
-
-    <script type="text/javascript">
-    /* Данная функция создаёт кроссбраузерный объект XMLHTTP */
-    function getXmlHttp() {
-        var xmlhttp;
-        try {
-        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (e) {
-        try {
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        } catch (E) {
-        xmlhttp = false;
-        }
-        }
-        if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
-        xmlhttp = new XMLHttpRequest();
-        }
-        return xmlhttp;
-    }
-    function deletes() {
-
-        var xmlhttp = getXmlHttp(); // Создаём объект XMLHTTP
-        xmlhttp.open('POST', '/testtechnics', true); // Открываем асинхронное соединение
-        xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Отправляем кодировку
-        xmlhttp.send(); // Отправляем POST-запрос
-    }
-    </script>
 </body>
 </html>

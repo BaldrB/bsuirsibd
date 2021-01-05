@@ -17,6 +17,13 @@ public class Location{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column
+    private String locationname;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "location", cascade = CascadeType.ALL)
+    private List<Technics> location;
+
+
     public Integer getId() {
         return this.id;
     }
@@ -24,9 +31,6 @@ public class Location{
     public void setId(Integer id) {
         this.id = id;
     }
-
-    @Column
-    private String locationname;
 
     public String getLocationname() {
         return this.locationname;
@@ -36,8 +40,7 @@ public class Location{
         this.locationname = locationname;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "location", cascade = CascadeType.ALL)
-    private List<Technics> location;
+    
 
     public List<Technics> getLocation() {
         return this.location;

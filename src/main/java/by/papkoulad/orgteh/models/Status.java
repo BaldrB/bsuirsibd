@@ -22,6 +22,9 @@ public class Status{
     @Column
     private String statusname;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "status", cascade = CascadeType.ALL)
+    private List<Technics> status;
+
     public String getStatusname() {
         return this.statusname;
     }
@@ -37,9 +40,6 @@ public class Status{
     public void setId(Integer id) {
         this.id = id;
     }
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "status", cascade = CascadeType.ALL)
-    private List<Technics> status;
 
     public List<Technics> getStatus() {
         return this.status;

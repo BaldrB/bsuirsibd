@@ -17,6 +17,15 @@ public class UserTech{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column
+    private String fio;
+
+    @Column
+    private Integer number;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "usertech", cascade = CascadeType.ALL)
+    private List<Technics> usertech;
+    
     public Integer getId() {
         return this.id;
     }
@@ -24,9 +33,6 @@ public class UserTech{
     public void setId(Integer id) {
         this.id = id;
     }
-
-    @Column
-    private String fio;
 
     public String getFio() {
         return this.fio;
@@ -36,8 +42,7 @@ public class UserTech{
         this.fio = fio;
     }
 
-    @Column
-    private Integer number;
+    
 
     public Integer getNumber() {
         return this.number;
@@ -47,8 +52,7 @@ public class UserTech{
         this.number = number;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "usertech", cascade = CascadeType.ALL)
-    private List<Technics> usertech;
+    
 
     public List<Technics> getUsertech() {
         return this.usertech;
